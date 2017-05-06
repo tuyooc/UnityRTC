@@ -7,7 +7,7 @@
 * 多人同时在线聊天：由于基于webrtc的p2p连接，每两个人之间都有一个peerconnection，只能少数几人互通，否则性能会有问题
 * 支持android和ios
 * 语音扬声器模式与游戏背景音共存
-* 网络断线重连
+* 语音断线重连
 ### SignalServer
   信令服务器，即房间服务器，负责端对端信令的传输。
   基于 https://github.com/LingyuCoder/SkyRTC-demo ，主要修改了：
@@ -37,3 +37,4 @@
 * 导出工程到xcode，build settings中找到bitcode enable设为NO（因为该版本libwebrtc.a未支持bitcode）
 * build phases 中link binary with libraries添加依赖库：libicucore.tbd，GLKit.framework，VideoToolbox.framework，Security.framework，CoreTelephony.framework
 ### SignalServer
+  安装nodejs环境，modules都已上传，无需再install，cd至SignalServer目录，命令行执行 node server.js
