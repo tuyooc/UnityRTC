@@ -31,6 +31,8 @@ public class main : MonoBehaviour {
 
     //背景音相关
     private bool mSoundMute = false;
+    private float sliderValue;
+    private SoundTool.Sound bgSound;
 
     //信令服务器ip
     public string host = "172.16.130.6";
@@ -74,13 +76,13 @@ public class main : MonoBehaviour {
         }
         x += w + 5;
         
-        if (GUI.Button(new Rect(x, y, w, h), "Create"))
-        {
-            Log("Create room: " + mRoomId);
-            if (!WebRtcSDK.Instance.IsChating)
-                WebRtcSDK.Instance.CreateRoom(mRoomId);
-        }
-        x += w + 5;
+//         if (GUI.Button(new Rect(x, y, w, h), "Create"))
+//         {
+//             Log("Create room: " + mRoomId);
+//             if (!WebRtcSDK.Instance.IsChating)
+//                 WebRtcSDK.Instance.CreateRoom(mRoomId);
+//         }
+//         x += w + 5;
 
         if (GUI.Button(new Rect(x, y, w, h), "Join"))
         {
@@ -128,18 +130,25 @@ public class main : MonoBehaviour {
         }
         x += w + 5;
 
+        //背景音效
         if (GUI.Button(new Rect(Screen.width - BUTTON_WIDTH, 0, w, h), "PlaySound"))
         {
             Log("PlaySound... ");
-            SoundTool.Play("test_bgm",1,1,0,true,SoundDef.BGM);
+            bgSound = SoundTool.Play("test_bgm", 1, 1, 0, true, SoundDef.BGM);
         }
-        if (GUI.Button(new Rect(Screen.width - BUTTON_WIDTH, h + 5, w, h), "MuteSound"))
+        if (GUI.Button(new Rect(Screen.width - BUTTON_WIDTH, h + 5, w, h), "IsPlaying"))
         {
-            Log("MuteSound... ");
-            mSoundMute = !mSoundMute;
-            float volume = mSoundMute ? 0 : 1;
-            SoundTool.SetVolume(SoundDef.BGM, volume);
+            bool isPlaying = false;
+            if (bgSound != null) { isPlaying = bgSound.IsPlaying(); }
+            Log("IsPlaying:" + isPlaying);
         }
+        if (GUI.Button(new Rect(Screen.width - BUTTON_WIDTH, 2* h + 5, w, h), "SetVolume"))
+        {
+            Log("SetVolume... " + sliderValue);
+            SoundTool.SetVolume(SoundDef.BGM, sliderValue);
+        }
+
+        sliderValue = GUI.HorizontalSlider(new Rect(Screen.width - BUTTON_WIDTH - 200, 2 * h + 20, 200, 50), sliderValue, 0.0f, 1.0f);  
     }
 
     public void Log(object msg)
