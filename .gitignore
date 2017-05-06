@@ -41,3 +41,12 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# unity library
+MutiRTC_Unity/Library/
+MutiRTC_Unity/Temp/
+
+#vs proj
+MutiRTC_Unity.CSharp.csproj
+MutiRTC_Unity.sln
+MutiRTC_Unity.v12.suo
