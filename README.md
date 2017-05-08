@@ -3,6 +3,7 @@
 ## 简介
 ### MutiRTC_Unity
   unity工程，基于版本5.3.3f1。包含一个简单的多人实时语音聊天室场景。语音模块以平台sdk形式集成进unity，包括安卓和ios的语音sdk，详见plugins目录。<br>
+  可支持多人视频(videotrack)和文字聊天(datachannel)，暂时屏蔽了
 #### 支持功能：
 * 多人同时在线聊天：由于基于webrtc的p2p连接，每两个人之间都有一个peerconnection，只能少数几人互通，否则性能会有问题
 * 支持android和ios
@@ -36,5 +37,6 @@
 * ios的语音库太大没有上传，从 http://pan.baidu.com/s/1o7UyI4U 下载libwebrtc.a库，拷贝至目录：Plugins\IOS\AudioRtc\libjingle_peerconnection\
 * 导出工程到xcode，build settings中找到bitcode enable设为NO（因为该版本libwebrtc.a未支持bitcode）
 * build phases 中link binary with libraries添加依赖库：libicucore.tbd，GLKit.framework，VideoToolbox.framework，Security.framework，CoreTelephony.framework
+* ios应用工程可参考 https://github.com/tuyaohui/WebRTC_iOS
 ### SignalServer
   安装nodejs环境，modules都已上传，无需再install，cd至SignalServer目录，命令行执行 node server.js
