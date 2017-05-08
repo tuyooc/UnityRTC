@@ -24,11 +24,9 @@ block();\
 dispatch_async(dispatch_get_main_queue(), block);\
 }
 
-//google提供的
-//static NSString *const RTCSTUNServerURL = @"stun:numb.viagenie.ca:3478";
-//static NSString *const RTCTURNServerURL = @"turn:numb.viagenie.ca";
-static NSString *const RTCSTUNServerURL = @"stun:125.88.151.31:3478";
-static NSString *const RTCTURNServerURL = @"turn:125.88.151.31";
+//第三方ice
+static NSString *const RTCSTUNServerURL = @"stun:numb.viagenie.ca:3478";
+static NSString *const RTCTURNServerURL = @"turn:numb.viagenie.ca";
 
 typedef enum : NSUInteger {
     //发送者
