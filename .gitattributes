@@ -16,4 +16,4 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 
-*.m linguist-language=csharp-c
+*.h linguist-language=csharp
